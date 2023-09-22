@@ -1,0 +1,31 @@
+{
+  "name": "wolfe",
+  "version": "0.0.1",
+  "description": "Scaffolding tool for Node.JS REST API projects using Drizzle, Zod, Express and automatic OpenAPI documentation generation.",
+  "main": "dist/index.js",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calasanmarko/wolfe.git"
+  },
+  "author": "Marko Calasan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/calasanmarko/wolfe/issues"
+  },
+  "homepage": "https://github.com/calasanmarko/wolfe#readme",
+  "devDependencies": {
+    "@types/node": "^20.6.3"
+  },
+  "bin": {
+    "wolfe": "./dist/index.js"
+  },
+  "keywords": [
+    "scaffolding",
+    "node",
+    "express",
+    "drizzle",
+    "zod",
+    "openapi"
+  ]
+}
