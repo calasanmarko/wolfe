@@ -1,4 +1,4 @@
-import { mkdirSync, rmdirSync, statSync } from "fs";
+import { existsSync, rmSync } from "fs";
 import { writeTemplate } from "../lib/templates.js";
 import { installPackages } from "../lib/packages.js";
 
@@ -10,14 +10,12 @@ export const init = async (args: string[]) => {
 
     const projectName = args[0];
 
-    if (statSync(projectName).isDirectory()) {
-        console.log(`Deleting existing folder ${projectName}`);
-        rmdirSync(projectName, { recursive: true });
-        return;
-    }
-
     console.log(`Creating project ${projectName}...`);
-    mkdirSync(projectName);
+
+    if (existsSync(projectName)) {
+        console.log(`Deleting existing folder ${projectName}...`);
+        rmSync(projectName, { recursive: true });
+    }
 
     console.log("Writing template...");
     writeTemplate("../../templates/init", projectName, projectName);

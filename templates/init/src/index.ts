@@ -4,6 +4,7 @@ import pg from "pg";
 import { NodePgDatabase, drizzle } from "drizzle-orm/node-postgres";
 import { createSwaggerDoc as createOApiDoc, updateDocPackage } from "./lib/oapi.js";
 import { serve, setup } from "swagger-ui-express";
+import { router } from "./router.js";
 
 declare global {
     namespace Express {
@@ -58,6 +59,9 @@ app.use('/api/docs', (_, res, next) => {
 
 // OPTIONS Endpoint
 app.options('*', (_, res) => res.sendStatus(200));
+
+// Wolfe-generated group routes
+app.use('/', router);
 
 // Error Middleware
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {

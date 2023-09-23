@@ -15,6 +15,7 @@
   },
   "homepage": "https://github.com/calasanmarko/wolfe#readme",
   "devDependencies": {
+    "@types/express": "^4.17.17",
     "@types/node": "^20.6.3"
   },
   "bin": {

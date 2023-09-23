@@ -1,13 +1,18 @@
-import { cpSync, readdirSync, statSync, readFileSync, writeFileSync } from "fs";
+import { cpSync, readdirSync, statSync, readFileSync, writeFileSync, mkdirSync } from "fs";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-export const writeTemplate = (templatePath: string, destinationPath: string, projectName: string) => {
+export const writeTemplate = (templatePath: string, destinationPath: string, projectName: string, createDir: boolean = true) => {
     console.log("Copying files...");
-    cpSync(path.resolve(__dirname, templatePath), projectName, { recursive: true });
+
+    if (createDir) {
+        mkdirSync(destinationPath, { recursive: true });
+    }
+    
+    cpSync(path.resolve(__dirname, templatePath), destinationPath, { recursive: true });
 
     console.log("Processing files...");
     const files = getAllFiles(destinationPath, []);
