@@ -1,13 +1,6 @@
-import { spawnSync } from "child_process";
-import { cpSync, mkdirSync, readFileSync, readdirSync, rmdirSync, statSync, writeFileSync } from "fs";
-import path from "path";
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import { mkdirSync, rmdirSync, statSync } from "fs";
 import { writeTemplate } from "../lib/templates.js";
 import { installPackages } from "../lib/packages.js";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 export const init = async (args: string[]) => {
     if (args.length == 0) {
