@@ -1,8 +1,9 @@
-import { existsSync, readFileSync } from "fs";
+import { existsSync, readFileSync, writeFileSync } from "fs";
 import path from "path";
 
 // Moves up the directory tree until it finds the directory containing wolfe.json
 export const findWolfeRoot = (cwd: string = process.cwd()): string => {
+    console.log(cwd);
     const wolfeJsonPath = path.join(cwd, 'wolfe.json');
     if (existsSync(wolfeJsonPath)) {
         return cwd;
@@ -23,4 +24,9 @@ export const findLine = (filePath: string, line: string): number => {
         }
     }
     throw new Error(`Could not find line ${line} in ${filePath}`);
+}
+
+export const prependFile = async (file: string, text: string) => {
+    const data = readFileSync(file, 'utf-8');
+    writeFileSync(file, text + data);
 }
