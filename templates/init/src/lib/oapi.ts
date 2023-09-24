@@ -10,9 +10,9 @@ const config = {
     openapi: '3.0.0',
     info: {
         version: '1.0.0',
-        title: 'Datenight API'
+        title: ''
     },
-    servers: [{url: 'https://payroll-demo.click/datenight/api'}],
+    servers: [{url: ''}],
     baseDir: '..',
     filesPattern: './routes/**/*.ts',
 };
@@ -23,7 +23,7 @@ export const createSwaggerDoc = async (): Promise<JsonObject> => {
         (expressJSDocSwagger as any)(dummyApp)({
             info: {
                 version: '1.0.0',
-                title: 'Datenight API'
+                title: ''
             },
             baseDir: ".",
             filesPattern: './**/*.js',
